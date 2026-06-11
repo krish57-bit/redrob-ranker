@@ -1,5 +1,5 @@
 # Redrob Hackathon — Submission Metadata
-# NOTE: fill in github_repo and sandbox_link before submitting.
+# Mirrors the portal metadata, per submission_spec section 10.3.
 
 team_name: "Ctrl Alt Debug"
 
@@ -22,11 +22,11 @@ sandbox_link: "https://ctrl-alt-debug-ranker.streamlit.app"
 reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
 
 compute:
-  platform: "Windows laptop"
-  cpu_cores: 8
+  platform: "Linux sandbox (cloud VM), 2-core CPU"
+  cpu_cores: 2
   ram_gb: 16
-  python_version: "3.11"
-  os: "Windows 11"
+  python_version: "3.10"
+  os: "Ubuntu 22.04 LTS"
   uses_gpu_for_inference: false
   has_network_during_ranking: false
   pre_computation_required: false
@@ -36,10 +36,13 @@ ai_tools_used:
   - "Claude"
 
 ai_usage_summary: |
-  Used Claude (Cowork) for architecture discussion, code drafting, and code
-  review across the pipeline; all design decisions, weights, and trap
-  defenses were specified and verified by the team. No hosted LLM is called
-  anywhere in the ranking step; the ranker is fully offline and deterministic.
+  Used Claude (Cowork) extensively: architecture discussion, code drafting,
+  code review, and reproduction testing across the pipeline. The team
+  directed the approach and owns the design decisions, weights, and trap
+  defenses. Reproduction was verified by cloning the public repo and
+  regenerating submission.csv byte-identically on the full 100K pool
+  (Linux, 2-core CPU, no network). No hosted LLM is called anywhere in the
+  ranking step; the ranker is fully offline and deterministic.
 
 methodology_summary: |
   Interpretable hybrid ranker, no LLM at ranking time. Seven weighted
