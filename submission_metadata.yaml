@@ -1,0 +1,66 @@
+# Redrob Hackathon — Submission Metadata
+# NOTE: fill in github_repo and sandbox_link before submitting.
+
+team_name: "Ctrl Alt Debug"
+
+primary_contact:
+  name: "Krish Kaul"
+  email: "krishkaul57@gmail.com"
+  phone: "+91-9501798019"
+
+team_members:
+  - name: "Krish Kaul"
+    email: "krishkaul57@gmail.com"
+    role: "Team Lead / ML Engineer"
+  - name: "Ankita Chopra"
+    email: "achopra_be23@thapar.edu"
+    role: "ML Engineer"
+
+github_repo: "https://github.com/YOUR_USERNAME/redrob-ranker"
+sandbox_link: "https://YOUR_APP.streamlit.app"   # deploy app.py on Streamlit Cloud
+
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+compute:
+  platform: "Windows laptop"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.11"
+  os: "Windows 11"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+
+ai_tools_used:
+  - "Claude"
+
+ai_usage_summary: |
+  Used Claude (Cowork) for architecture discussion, code drafting, and code
+  review across the pipeline; all design decisions, weights, and trap
+  defenses were specified and verified by the team. No hosted LLM is called
+  anywhere in the ranking step; the ranker is fully offline and deterministic.
+
+methodology_summary: |
+  Interpretable hybrid ranker, no LLM at ranking time. Seven weighted
+  components: career-history evidence mining (retrieval/ranking/NLP-LLM/
+  production keyword families, recency-decayed) 0.32; current-title
+  relevance 0.18 (gates keyword stuffers — non-technical titles are floored);
+  trust-weighted skills 0.16 (skills count only when corroborated by
+  duration, endorsements, or assessment scores); TF-IDF+LSA semantic
+  similarity to the JD 0.12; experience-band fit 0.10; location 0.08;
+  notice-period logistics 0.04. Multiplicative penalties encode the JD's
+  explicit disqualifiers (consulting-only careers, research-without-
+  production, CV/speech-only, job-hoppers). A behavioral multiplier
+  down-weights unavailable candidates (inactivity, low recruiter response,
+  not open to work, low interview completion). Honeypots are caught by four
+  internal-consistency checks (impossible skill durations, expert-with-zero-
+  use, date mismatches, career overflow): 0 honeypots in our top 100.
+  Runtime ~2.5 min on 2-core CPU, <3 GB RAM, fully offline.
+
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
