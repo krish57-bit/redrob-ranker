@@ -1,0 +1,13 @@
+# Core ranking pipeline (offline, CPU-only)
+numpy>=1.24
+scipy>=1.10
+scikit-learn>=1.3
+
+# Sandbox demo (app.py)
+streamlit>=1.30
+
+# Tests
+pytest>=7.0
+
+# Optional MiniLM semantic backend only (not needed to reproduce the submission):
+# sentence-transformers>=2.5
