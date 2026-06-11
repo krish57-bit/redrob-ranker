@@ -17,7 +17,7 @@ team_members:
     role: "ML Engineer"
 
 github_repo: "https://github.com/krish57-bit/redrob-ranker"
-sandbox_link: "https://YOUR_APP.streamlit.app"   # deploy app.py on Streamlit Cloud
+sandbox_link: "https://ctrl-alt-debug-ranker.streamlit.app"
 
 reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
 
